@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Local private resume data
+local/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -25,3 +28,4 @@ dist-ssr
 
 # Codex
 .codex
+.playwright-mcp
