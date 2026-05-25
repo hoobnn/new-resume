@@ -3,18 +3,21 @@ import { RichText } from './RichText'
 
 interface EntryBlockProps {
   entry: Entry
+  showTitle?: boolean
 }
 
-export function EntryBlock({ entry }: EntryBlockProps) {
+export function EntryBlock({ entry, showTitle = true }: EntryBlockProps) {
   return (
     <article className="entry">
-      <div className="entry-title">
-        <span className="org">{entry.title}</span>
-        {entry.role ? <span className="role">{entry.role}</span> : null}
-        {entry.date ? <span className="date">{entry.date}</span> : null}
-      </div>
+      {showTitle ? (
+        <div className="entry-title">
+          <span className="org">{entry.title}</span>
+          {entry.role ? <span className="role">{entry.role}</span> : null}
+          {entry.date ? <span className="date">{entry.date}</span> : null}
+        </div>
+      ) : null}
 
-      {entry.lede ? (
+      {entry.lede && showTitle ? (
         <p className="entry-lede">
           <RichText text={entry.lede} />
         </p>
