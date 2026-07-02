@@ -1,5 +1,7 @@
 export type Theme = 'paper' | 'plain' | 'dark'
 
+export type Locale = 'zh' | 'en'
+
 export interface Profile {
   name: string
   englishName: string

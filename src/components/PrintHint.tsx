@@ -1,9 +1,15 @@
+import { LABELS } from '../lib/i18n'
+import type { Locale } from '../types'
+
 interface PrintHintProps {
+  locale: Locale
   onCancel: () => void
   onProceed: (skipFutureHint: boolean) => void
 }
 
-export function PrintHint({ onCancel, onProceed }: PrintHintProps) {
+export function PrintHint({ locale, onCancel, onProceed }: PrintHintProps) {
+  const hint = LABELS[locale].printHint
+
   return (
     <div className="pdf-hint no-print" role="presentation" onClick={onCancel}>
       <div
@@ -13,19 +19,22 @@ export function PrintHint({ onCancel, onProceed }: PrintHintProps) {
         onClick={(event) => event.stopPropagation()}
       >
         <div className="pdf-hint-title" id="pdf-hint-title">
-          导出文字可选 PDF
+          {hint.title}
         </div>
         <ol className="pdf-hint-list">
           <li>
-            “目标 / Destination” 选择 <strong>另存为 PDF / Save as PDF</strong>
+            {hint.step1Pre}
+            <strong>{hint.step1Strong}</strong>
           </li>
           <li>
-            勾选 <strong>背景图形 / Background graphics</strong>，保留纸张底色
+            {hint.step2Pre}
+            <strong>{hint.step2Strong}</strong>
+            {hint.step2Post}
           </li>
         </ol>
         <div className="pdf-hint-actions">
           <button type="button" className="pdf-hint-cancel" onClick={onCancel}>
-            取消
+            {hint.cancel}
           </button>
           <button
             type="button"
@@ -35,11 +44,11 @@ export function PrintHint({ onCancel, onProceed }: PrintHintProps) {
               onProceed(Boolean(checkbox?.checked))
             }}
           >
-            继续打印
+            {hint.proceed}
           </button>
         </div>
         <label className="pdf-hint-skip">
-          <input type="checkbox" id="pdf-hint-skip" /> 不再提示
+          <input type="checkbox" id="pdf-hint-skip" /> {hint.skip}
         </label>
       </div>
     </div>

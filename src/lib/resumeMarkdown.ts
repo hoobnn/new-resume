@@ -7,7 +7,50 @@ interface ParsedMarkdown {
   meta: Meta
 }
 
-export function parseResumeMarkdown(markdown: string): ResumeData {
+export interface ResumeSchema {
+  sections: {
+    strengths: string
+    experience: string
+    projects: string
+    education: string
+    honors: string
+  }
+  eduKeys: { courses: string; honors: string }
+  honorKeys: { certificates: string; competitions: string; recognitions: string }
+}
+
+export const ZH_SCHEMA: ResumeSchema = {
+  sections: {
+    strengths: '个人优势',
+    experience: '工作经历',
+    projects: '项目经历',
+    education: '教育经历',
+    honors: '荣誉与证书',
+  },
+  eduKeys: { courses: '专业课程', honors: '核心荣誉' },
+  honorKeys: { certificates: '专业证书', competitions: '学科竞赛', recognitions: '综合表彰' },
+}
+
+export const EN_SCHEMA: ResumeSchema = {
+  sections: {
+    strengths: 'Highlights',
+    experience: 'Experience',
+    projects: 'Projects',
+    education: 'Education',
+    honors: 'Honors & Certifications',
+  },
+  eduKeys: { courses: 'Core Courses', honors: 'Honors' },
+  honorKeys: {
+    certificates: 'Certifications',
+    competitions: 'Competitions',
+    recognitions: 'Recognitions',
+  },
+}
+
+export function parseResumeMarkdown(
+  markdown: string,
+  schema: ResumeSchema = ZH_SCHEMA
+): ResumeData {
   const { body, meta } = parseFrontmatter(markdown)
 
   return {
@@ -24,14 +67,16 @@ export function parseResumeMarkdown(markdown: string): ResumeData {
       email: requireMeta(meta, 'email'),
       wechat: requireMeta(meta, 'wechat'),
     },
-    strengths: parseKeyValueBullets(getSection(body, '个人优势')).map(({ key, text }) => ({
-      key,
-      value: text,
-    })),
-    experience: parseEntry(getSection(body, '工作经历')),
-    projects: parseEntries(getSection(body, '项目经历')),
-    education: parseEducation(getSection(body, '教育经历')),
-    honors: parseHonors(getSection(body, '荣誉与证书')),
+    strengths: parseKeyValueBullets(getSection(body, schema.sections.strengths)).map(
+      ({ key, text }) => ({
+        key,
+        value: text,
+      })
+    ),
+    experience: parseEntry(getSection(body, schema.sections.experience)),
+    projects: parseEntries(getSection(body, schema.sections.projects)),
+    education: parseEducation(getSection(body, schema.sections.education), schema),
+    honors: parseHonors(getSection(body, schema.sections.honors), schema),
   }
 }
 
@@ -114,7 +159,7 @@ function parseEntry(markdown: string): Entry {
   }
 }
 
-function parseEducation(section: string): ResumeData['education'] {
+function parseEducation(section: string, schema: ResumeSchema): ResumeData['education'] {
   const [heading = '', ...lines] = section.split('\n')
   const [school, degree, major, date] = heading
     .replace(/^###\s+/, '')
@@ -129,20 +174,20 @@ function parseEducation(section: string): ResumeData['education'] {
     degree,
     major,
     date,
-    courses: splitInlineList(requireValue(values, '专业课程')),
-    honors: splitInlineList(requireValue(values, '核心荣誉')),
+    courses: splitInlineList(requireValue(values, schema.eduKeys.courses)),
+    honors: splitInlineList(requireValue(values, schema.eduKeys.honors)),
   }
 }
 
-function parseHonors(section: string): ResumeData['honors'] {
+function parseHonors(section: string, schema: ResumeSchema): ResumeData['honors'] {
   const values = Object.fromEntries(
     parseKeyValueBullets(section).map(({ key, text }) => [key, stripMarkdown(text)])
   )
 
   return {
-    certificates: splitInlineList(requireValue(values, '专业证书')),
-    competitions: splitInlineList(requireValue(values, '学科竞赛')),
-    recognitions: splitInlineList(requireValue(values, '综合表彰')),
+    certificates: splitInlineList(requireValue(values, schema.honorKeys.certificates)),
+    competitions: splitInlineList(requireValue(values, schema.honorKeys.competitions)),
+    recognitions: splitInlineList(requireValue(values, schema.honorKeys.recognitions)),
   }
 }
 

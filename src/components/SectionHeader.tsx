@@ -1,6 +1,6 @@
 interface SectionHeaderProps {
   title: string
-  subtitle: string
+  subtitle?: string
 }
 
 export function SectionHeader({ title, subtitle }: SectionHeaderProps) {
@@ -8,7 +8,7 @@ export function SectionHeader({ title, subtitle }: SectionHeaderProps) {
     <div className="sec-head">
       <span className="pip" />
       <span className="zh">{title}</span>
-      <span className="en">{subtitle}</span>
+      {subtitle ? <span className="en">{subtitle}</span> : null}
       <span className="rule" />
     </div>
   )
