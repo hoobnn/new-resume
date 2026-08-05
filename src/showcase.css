@@ -211,18 +211,35 @@ body[data-layout='showcase']::before {
   font-size: 10.5px;
   line-height: 1.35;
 }
-.showcase-honors {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: 9px;
+.showcase-honor-groups {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
 }
-.showcase-honors span {
-  background: #e8eef3;
+.showcase-honor-group h3 {
+  color: var(--muted);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin: 0 0 4px;
+}
+.showcase-honor-group ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.showcase-honor-group li {
   color: #4e6070;
-  font-size: 10px;
-  line-height: 1.35;
-  padding: 4px 6px;
+  font-size: 10.5px;
+  line-height: 1.5;
+  padding-left: 10px;
+  position: relative;
+}
+.showcase-honor-group li::before {
+  color: var(--blue);
+  content: '•';
+  left: 0;
+  position: absolute;
 }
 
 .showcase-content {
@@ -472,12 +489,9 @@ body[data-layout='showcase']::before {
   .showcase-featured-honors div {
     padding: 4px 6px;
   }
-  .showcase-honors {
-    gap: 2px;
-    margin-top: 4px;
-  }
-  .showcase-honors span {
-    padding: 1px 4px;
+  .showcase-honor-groups {
+    gap: 5px;
+    margin-top: 6px;
   }
   .showcase-content {
     padding: 0 0 0 24px;
@@ -497,7 +511,8 @@ body[data-layout='showcase']::before {
   .showcase-summary p,
   .showcase-strengths p,
   .showcase-featured-honors div,
-  .showcase-skill-group {
+  .showcase-skill-group,
+  .showcase-honor-group {
     break-inside: avoid;
   }
   .showcase-main-section > h2,
