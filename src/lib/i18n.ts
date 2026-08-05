@@ -25,10 +25,10 @@ export interface Labels {
   resumeLabel: string
   target: string
   expectedCity: string
-  expectedSalary: string
   phone: string
   email: string
   wechat: string
+  github: string
   sections: {
     strengths: SectionCopy
     experience: SectionCopy
@@ -53,10 +53,10 @@ export const LABELS: Record<Locale, Labels> = {
     resumeLabel: '简历',
     target: '求职意向',
     expectedCity: '期望城市',
-    expectedSalary: '期望薪资',
     phone: '电话',
     email: '邮箱',
     wechat: '微信',
+    github: 'GitHub',
     sections: {
       strengths: { title: '个人优势', subtitle: 'Capabilities' },
       experience: { title: '工作经历', subtitle: 'Experience' },
@@ -89,10 +89,10 @@ export const LABELS: Record<Locale, Labels> = {
     resumeLabel: 'Resume',
     target: 'Objective',
     expectedCity: 'Location',
-    expectedSalary: 'Expected Salary',
     phone: 'Phone',
     email: 'Email',
     wechat: 'WeChat',
+    github: 'GitHub',
     sections: {
       strengths: { title: 'Highlights' },
       experience: { title: 'Experience' },

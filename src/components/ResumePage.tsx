@@ -53,12 +53,6 @@ export function ResumePage({ photoUrl, resume, locale }: ResumePageProps) {
                 {labels.expectedCity}
                 {labels.colon}
                 {profile.expectedCity}
-                <span className="dot">·</span>
-                <span className="salary">
-                  {labels.expectedSalary}
-                  {labels.colon}
-                  {profile.expectedSalary}
-                </span>
               </span>
               <span className="seg contact-seg">
                 <span className="k">{labels.phone}</span>
@@ -69,6 +63,9 @@ export function ResumePage({ photoUrl, resume, locale }: ResumePageProps) {
                 <span className="dot">·</span>
                 <span className="k">{labels.wechat}</span>
                 <span className="v">{profile.wechat}</span>
+                <span className="dot">·</span>
+                <span className="k">{labels.github}</span>
+                <span className="v">{profile.github}</span>
               </span>
             </div>
           </div>

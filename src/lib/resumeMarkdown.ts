@@ -61,11 +61,11 @@ export function parseResumeMarkdown(
       age: requireMeta(meta, 'age'),
       yearsOfExperience: requireMeta(meta, 'yearsOfExperience'),
       target: requireMeta(meta, 'target'),
-      expectedSalary: requireMeta(meta, 'expectedSalary'),
       expectedCity: requireMeta(meta, 'expectedCity'),
       phone: requireMeta(meta, 'phone'),
       email: requireMeta(meta, 'email'),
       wechat: requireMeta(meta, 'wechat'),
+      github: requireMeta(meta, 'github'),
     },
     strengths: parseKeyValueBullets(getSection(body, schema.sections.strengths)).map(
       ({ key, text }) => ({

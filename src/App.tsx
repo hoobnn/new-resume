@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { PrintHint } from './components/PrintHint'
 import { ResumePage } from './components/ResumePage'
+import { ShowcaseResumePage } from './components/ShowcaseResumePage'
 import { ThemeToolbar } from './components/ThemeToolbar'
 import { EN_SCHEMA, ZH_SCHEMA, parseResumeMarkdown } from './lib/resumeMarkdown'
 import photoUrl from '../local/data/photo.png'
@@ -33,6 +34,7 @@ export function App() {
   const [theme, setTheme] = useState<Theme>(getInitialTheme)
   const [locale, setLocale] = useState<Locale>(getInitialLocale)
   const [showPrintHint, setShowPrintHint] = useState(false)
+  const isShowcase = new URLSearchParams(window.location.search).get('style') !== 'classic'
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme
@@ -44,6 +46,10 @@ export function App() {
     document.documentElement.lang = locale === 'en' ? 'en' : 'zh-CN'
     localStorage.setItem(LANG_KEY, locale)
   }, [locale])
+
+  useEffect(() => {
+    document.body.dataset.layout = isShowcase ? 'showcase' : 'classic'
+  }, [isShowcase])
 
   function printNow() {
     requestAnimationFrame(() => requestAnimationFrame(() => window.print()))
@@ -63,6 +69,17 @@ export function App() {
     }
     setShowPrintHint(false)
     printNow()
+  }
+
+  if (isShowcase) {
+    return (
+      <ShowcaseResumePage
+        locale={locale}
+        photoUrl={photoUrl}
+        resume={resumeByLocale[locale]}
+        onLocaleChange={setLocale}
+      />
+    )
   }
 
   return (

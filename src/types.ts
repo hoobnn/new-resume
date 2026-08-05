@@ -9,11 +9,11 @@ export interface Profile {
   age: string
   yearsOfExperience: string
   target: string
-  expectedSalary: string
   expectedCity: string
   phone: string
   email: string
   wechat: string
+  github: string
 }
 
 export interface Strength {
