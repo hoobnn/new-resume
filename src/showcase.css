@@ -107,7 +107,7 @@ body[data-layout='showcase']::before {
 }
 .showcase-side-section h2 {
   color: var(--blue-dark);
-  font-size: 12.5px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   margin: 0 0 14px;
   padding-bottom: 8px;
@@ -134,12 +134,12 @@ body[data-layout='showcase']::before {
 }
 .showcase-contact-list dt {
   color: var(--muted);
-  font-size: 9.5px;
+  font-size: 10px;
   letter-spacing: 0.08em;
 }
 .showcase-contact-list dd {
   color: var(--ink);
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 600;
   margin: 1px 0 0;
   overflow-wrap: anywhere;
@@ -151,7 +151,7 @@ body[data-layout='showcase']::before {
 }
 .showcase-skill-group h3 {
   color: var(--muted);
-  font-size: 9.5px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.08em;
   margin: 0 0 5px;
@@ -165,24 +165,24 @@ body[data-layout='showcase']::before {
   background: #fff;
   border: 1px solid var(--line);
   color: var(--ink);
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.4;
   padding: 3px 7px;
 }
 
 .showcase-education strong {
   display: block;
-  font-size: 12.5px;
+  font-size: 13px;
 }
 .showcase-education span {
   color: var(--blue);
   display: block;
-  font-size: 9px;
+  font-size: 10px;
   margin-top: 2px;
 }
 .showcase-education p {
   color: var(--muted);
-  font-size: 10.5px;
+  font-size: 11px;
   margin: 5px 0 0;
 }
 
@@ -202,13 +202,13 @@ body[data-layout='showcase']::before {
 }
 .showcase-featured-honors span {
   color: var(--blue);
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 800;
   letter-spacing: 0.08em;
 }
 .showcase-featured-honors strong {
   color: var(--blue-dark);
-  font-size: 10.5px;
+  font-size: 11px;
   line-height: 1.35;
 }
 .showcase-honor-groups {
@@ -218,7 +218,7 @@ body[data-layout='showcase']::before {
 }
 .showcase-honor-group h3 {
   color: var(--muted);
-  font-size: 9.5px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.08em;
   margin: 0 0 4px;
@@ -230,7 +230,7 @@ body[data-layout='showcase']::before {
 }
 .showcase-honor-group li {
   color: #4e6070;
-  font-size: 10.5px;
+  font-size: 11px;
   line-height: 1.5;
   padding-left: 10px;
   position: relative;
