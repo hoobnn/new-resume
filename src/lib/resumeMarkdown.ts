@@ -198,9 +198,10 @@ function parseEducation(section: string, schema: ResumeSchema): ResumeData['educ
   }
 }
 
+// 荣誉条目保留 **加粗** 标记，由视图用 RichText 渲染，重要条目在 markdown 中标注
 function parseHonors(section: string, schema: ResumeSchema): ResumeData['honors'] {
   const values = Object.fromEntries(
-    parseKeyValueBullets(section).map(({ key, text }) => [key, stripMarkdown(text)])
+    parseKeyValueBullets(section).map(({ key, text }) => [key, text])
   )
 
   return {

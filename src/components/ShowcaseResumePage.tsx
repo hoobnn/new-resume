@@ -28,7 +28,6 @@ const COPY = {
       ['9 个', '上游 PR'],
     ],
     contactLabels: ['所在地', '电话', '邮箱', '微信', 'GitHub'],
-    honorLabels: { competitions: '竞赛', certificates: '证书', recognitions: '表彰' },
   },
   en: {
     back: 'Classic',
@@ -48,11 +47,6 @@ const COPY = {
       ['9', 'Upstream PRs'],
     ],
     contactLabels: ['Location', 'Phone', 'Email', 'WeChat', 'GitHub'],
-    honorLabels: {
-      competitions: 'Competitions',
-      certificates: 'Certifications',
-      recognitions: 'Recognitions',
-    },
   },
 } as const
 
@@ -136,14 +130,12 @@ export function ShowcaseResumePage({
   const featuredHonors = [education.honors[0], education.honors[1], honors.competitions[0]].filter(
     Boolean
   )
-  const honorGroups = [
-    { title: copy.honorLabels.competitions, items: honors.competitions.slice(1) },
-    { title: copy.honorLabels.certificates, items: honors.certificates },
-    {
-      title: copy.honorLabels.recognitions,
-      items: [...education.honors.slice(2), ...honors.recognitions],
-    },
-  ].filter((group) => group.items.length > 0)
+  const otherHonors = [
+    ...honors.certificates,
+    ...honors.competitions.slice(1),
+    ...honors.recognitions,
+    ...education.honors.slice(2),
+  ]
 
   return (
     <div className="showcase-app">
@@ -204,18 +196,13 @@ export function ShowcaseResumePage({
                 </div>
               ))}
             </div>
-            <div className="showcase-honor-groups">
-              {honorGroups.map((group) => (
-                <div className="showcase-honor-group" key={group.title}>
-                  <h3>{group.title}</h3>
-                  <ul>
-                    {group.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </div>
+            <ul className="showcase-honor-list">
+              {otherHonors.map((honor) => (
+                <li key={honor}>
+                  <RichText text={honor} />
+                </li>
               ))}
-            </div>
+            </ul>
           </SidebarSection>
         </aside>
 

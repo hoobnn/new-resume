@@ -170,7 +170,9 @@ export function ResumePage({ photoUrl, resume, locale }: ResumePageProps) {
                 {honors.certificates.map((certificate, index) => (
                   <span key={certificate}>
                     {index > 0 ? <span className="sep">·</span> : null}
-                    <span className="honor-top">{certificate}</span>
+                    <span className="honor-top">
+                      <RichText text={certificate} />
+                    </span>
                   </span>
                 ))}
               </span>
@@ -178,12 +180,16 @@ export function ResumePage({ photoUrl, resume, locale }: ResumePageProps) {
 
             <div className="edu-line">
               <span className="key">{labels.certCompetitions}</span>
-              <span className="val">{honors.competitions.join(' · ')}</span>
+              <span className="val">
+                <RichText text={honors.competitions.join(' · ')} />
+              </span>
             </div>
 
             <div className="edu-line">
               <span className="key">{labels.certRecognitions}</span>
-              <span className="val">{honors.recognitions.join(' · ')}</span>
+              <span className="val">
+                <RichText text={honors.recognitions.join(' · ')} />
+              </span>
             </div>
           </div>
         </section>

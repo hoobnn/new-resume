@@ -77,21 +77,10 @@ body[data-layout='showcase']::before {
   background: #fff;
   border: 6px solid #fff;
   box-shadow: 0 0 0 1px var(--line);
-  height: 154px;
-  margin: 0 0 34px;
+  height: 170px;
+  margin: 0 auto 30px;
   overflow: hidden;
-  position: relative;
-  width: 124px;
-}
-
-.showcase-photo::after {
-  background: var(--blue);
-  content: '';
-  height: 3px;
-  left: 8px;
-  position: absolute;
-  top: 8px;
-  width: 46px;
+  width: 136px;
 }
 
 .showcase-photo img {
@@ -211,35 +200,27 @@ body[data-layout='showcase']::before {
   font-size: 11px;
   line-height: 1.35;
 }
-.showcase-honor-groups {
-  display: grid;
-  gap: 10px;
-  margin-top: 12px;
-}
-.showcase-honor-group h3 {
-  color: var(--muted);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  margin: 0 0 4px;
-}
-.showcase-honor-group ul {
+.showcase-honor-list {
   list-style: none;
-  margin: 0;
+  margin: 12px 0 0;
   padding: 0;
 }
-.showcase-honor-group li {
+.showcase-honor-list li {
   color: #4e6070;
   font-size: 11px;
   line-height: 1.5;
+  margin-bottom: 3px;
   padding-left: 10px;
   position: relative;
 }
-.showcase-honor-group li::before {
+.showcase-honor-list li::before {
   color: var(--blue);
   content: '•';
   left: 0;
   position: absolute;
+}
+.showcase-honor-list strong {
+  color: var(--ink);
 }
 
 .showcase-content {
@@ -461,9 +442,9 @@ body[data-layout='showcase']::before {
   }
   /* 压缩侧栏纵向间距，确保侧栏整体落在第 1 页，避免溢出到第 2 页顶部形成半栏 */
   .showcase-photo {
-    height: 70px;
+    height: 100px;
     margin-bottom: 10px;
-    width: 56px;
+    width: 80px;
   }
   .showcase-side-section {
     margin-top: 12px;
@@ -489,9 +470,11 @@ body[data-layout='showcase']::before {
   .showcase-featured-honors div {
     padding: 4px 6px;
   }
-  .showcase-honor-groups {
-    gap: 5px;
+  .showcase-honor-list {
     margin-top: 6px;
+  }
+  .showcase-honor-list li {
+    margin-bottom: 1px;
   }
   .showcase-content {
     padding: 0 0 0 24px;
@@ -512,7 +495,7 @@ body[data-layout='showcase']::before {
   .showcase-strengths p,
   .showcase-featured-honors div,
   .showcase-skill-group,
-  .showcase-honor-group {
+  .showcase-honor-list li {
     break-inside: avoid;
   }
   .showcase-main-section > h2,
