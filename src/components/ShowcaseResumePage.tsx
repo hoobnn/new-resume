@@ -1,4 +1,4 @@
-import type { Entry, Locale, ResumeData } from '../types'
+import type { Entry, Locale, ResumeData, SkillGroup } from '../types'
 import { RichText } from './RichText'
 import '../showcase.css'
 
@@ -66,59 +66,19 @@ function MainSection({ title, children }: { title: string; children: React.React
   )
 }
 
-function CapabilityRadar({ labels }: { labels: string[] }) {
-  const points = [
-    [100, 22],
-    [166, 60],
-    [160, 132],
-    [100, 164],
-    [44, 132],
-    [34, 60],
-  ]
-
+function SkillGroups({ groups }: { groups: SkillGroup[] }) {
   return (
-    <div className="showcase-radar-wrap">
-      <svg className="showcase-radar" viewBox="0 0 200 185" role="img" aria-label="能力覆盖雷达图">
-        {[68, 51, 34, 17].map((radius) => (
-          <polygon
-            key={radius}
-            className="showcase-radar-grid"
-            points={`100,${92 - radius} ${100 + radius * 0.866},${92 - radius * 0.5} ${100 + radius * 0.866},${92 + radius * 0.5} 100,${92 + radius} ${100 - radius * 0.866},${92 + radius * 0.5} ${100 - radius * 0.866},${92 - radius * 0.5}`}
-          />
-        ))}
-        {points.map(([x, y]) => (
-          <line key={`${x}-${y}`} className="showcase-radar-axis" x1="100" y1="92" x2={x} y2={y} />
-        ))}
-        <polygon
-          className="showcase-radar-value"
-          points="100,28 158,59 152,127 100,153 50,121 40,62"
-        />
-        {[
-          [100, 28],
-          [158, 59],
-          [152, 127],
-          [100, 153],
-          [50, 121],
-          [40, 62],
-        ].map(([x, y]) => (
-          <circle key={`${x}-${y}`} cx={x} cy={y} r="3" />
-        ))}
-        <circle className="showcase-radar-core" cx="100" cy="92" r="23" />
-        <text className="showcase-radar-name" x="100" y="90" textAnchor="middle">
-          AI
-        </text>
-        <text className="showcase-radar-sub" x="100" y="103" textAnchor="middle">
-          COVERAGE
-        </text>
-      </svg>
-      <ol className="showcase-radar-legend">
-        {labels.map((label, index) => (
-          <li key={label}>
-            <span>{index + 1}</span>
-            {label}
-          </li>
-        ))}
-      </ol>
+    <div className="showcase-skills">
+      {groups.map((group) => (
+        <div className="showcase-skill-group" key={group.name}>
+          <h3>{group.name}</h3>
+          <div>
+            {group.items.map((item) => (
+              <span key={item}>{item}</span>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   )
 }
@@ -157,7 +117,7 @@ export function ShowcaseResumePage({
   onLocaleChange,
 }: ShowcaseResumePageProps) {
   const copy = COPY[locale]
-  const { profile, strengths, experience, projects, education, honors } = resume
+  const { profile, strengths, skills, experience, projects, education, honors } = resume
   const contacts = [
     [copy.contactLabels[0], profile.expectedCity],
     [copy.contactLabels[3], profile.wechat],
@@ -209,9 +169,11 @@ export function ShowcaseResumePage({
             </dl>
           </SidebarSection>
 
-          <SidebarSection title={copy.strengths}>
-            <CapabilityRadar labels={strengths.map((strength) => strength.key)} />
-          </SidebarSection>
+          {skills.length > 0 ? (
+            <SidebarSection title={copy.strengths}>
+              <SkillGroups groups={skills} />
+            </SidebarSection>
+          ) : null}
 
           <SidebarSection title={copy.education}>
             <div className="showcase-education">

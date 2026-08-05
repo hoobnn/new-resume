@@ -145,76 +145,29 @@ body[data-layout='showcase']::before {
   overflow-wrap: anywhere;
 }
 
-.showcase-radar-wrap {
-  margin-top: -4px;
+.showcase-skills {
+  display: grid;
+  gap: 12px;
 }
-.showcase-radar {
-  display: block;
-  height: 176px;
-  margin: 0 auto;
-  width: 100%;
-}
-.showcase-radar-grid {
-  fill: none;
-  stroke: #cbd7e1;
-  stroke-width: 1;
-}
-.showcase-radar-axis {
-  stroke: #dce5ec;
-  stroke-width: 1;
-}
-.showcase-radar-value {
-  fill: rgba(53, 95, 134, 0.2);
-  stroke: var(--blue);
-  stroke-width: 2;
-}
-.showcase-radar circle:not(.showcase-radar-core) {
-  fill: #79a9ce;
-  stroke: #fff;
-  stroke-width: 1.5;
-}
-.showcase-radar-core {
-  fill: var(--blue-dark);
-}
-.showcase-radar-name {
-  fill: #fff;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-}
-.showcase-radar-sub {
-  fill: #cfe0ee;
-  font-size: 5px;
+.showcase-skill-group h3 {
+  color: var(--muted);
+  font-size: 9.5px;
   font-weight: 700;
   letter-spacing: 0.08em;
+  margin: 0 0 5px;
 }
-.showcase-radar-legend {
-  display: grid;
-  gap: 5px 8px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  list-style: none;
-  margin: 2px 0 0;
-  padding: 0;
-}
-.showcase-radar-legend li {
-  align-items: center;
-  color: var(--ink);
+.showcase-skill-group div {
   display: flex;
-  font-size: 9px;
-  gap: 5px;
-  line-height: 1.25;
+  flex-wrap: wrap;
+  gap: 4px;
 }
-.showcase-radar-legend span {
-  align-items: center;
-  background: var(--blue-soft);
-  border-radius: 50%;
-  color: var(--blue-dark);
-  display: inline-flex;
-  flex: 0 0 16px;
-  font-size: 7px;
-  font-weight: 800;
-  height: 16px;
-  justify-content: center;
+.showcase-skill-group span {
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 10px;
+  line-height: 1.4;
+  padding: 3px 7px;
 }
 
 .showcase-education strong {
@@ -255,7 +208,7 @@ body[data-layout='showcase']::before {
 }
 .showcase-featured-honors strong {
   color: var(--blue-dark);
-  font-size: 10px;
+  font-size: 10.5px;
   line-height: 1.35;
 }
 .showcase-honors {
@@ -267,7 +220,7 @@ body[data-layout='showcase']::before {
 .showcase-honors span {
   background: #e8eef3;
   color: #4e6070;
-  font-size: 8.5px;
+  font-size: 10px;
   line-height: 1.35;
   padding: 4px 6px;
 }
