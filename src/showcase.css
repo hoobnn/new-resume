@@ -340,6 +340,24 @@ body[data-layout='showcase']::before {
   margin-top: 3px;
 }
 
+.showcase-strengths {
+  border-top: 1px solid var(--line);
+  margin-top: 16px;
+  padding-top: 14px;
+}
+.showcase-strengths p {
+  color: #4d5b67;
+  font-size: 12px;
+  line-height: 1.68;
+  margin: 0 0 6px;
+}
+.showcase-strengths p:last-child {
+  margin-bottom: 0;
+}
+.showcase-strengths strong {
+  color: var(--ink);
+}
+
 .showcase-entry {
   border-bottom: 1px solid var(--line);
   margin-bottom: 20px;

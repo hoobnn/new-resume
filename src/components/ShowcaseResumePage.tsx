@@ -20,6 +20,7 @@ const COPY = {
     projects: '项目经历',
     education: '教育背景',
     honors: '荣誉与证书',
+    // ponytail: 指标数值与 local/data/resume.md 手工同步，改简历数据时记得更新
     metrics: [
       ['3 省 / 9 地市', '生产部署'],
       ['近 1 万笔', '日均审核'],
@@ -38,6 +39,7 @@ const COPY = {
     projects: 'Projects',
     education: 'Education',
     honors: 'Honors & Certifications',
+    // ponytail: 指标数值与 local/data/resume.md 手工同步，改简历数据时记得更新
     metrics: [
       ['3 provinces / 9 cities', 'Deployments'],
       ['~10,000', 'Reviews/day'],
@@ -227,6 +229,14 @@ export function ShowcaseResumePage({
                   <strong>{value}</strong>
                   <span>{label}</span>
                 </div>
+              ))}
+            </div>
+            <div className="showcase-strengths">
+              {strengths.slice(2).map((strength) => (
+                <p key={strength.key}>
+                  <strong>{strength.key} · </strong>
+                  <RichText text={strength.value} />
+                </p>
               ))}
             </div>
           </MainSection>
