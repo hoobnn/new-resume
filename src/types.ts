@@ -21,6 +21,11 @@ export interface Strength {
   value: string
 }
 
+export interface SkillGroup {
+  name: string
+  items: string[]
+}
+
 export interface Bullet {
   lead?: string
   text: string
@@ -52,6 +57,7 @@ export interface Honors {
 export interface ResumeData {
   profile: Profile
   strengths: Strength[]
+  skills: SkillGroup[]
   experience: Entry
   projects: Entry[]
   education: Education

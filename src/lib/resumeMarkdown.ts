@@ -1,4 +1,4 @@
-import type { Bullet, Entry, ResumeData } from '../types'
+import type { Bullet, Entry, ResumeData, SkillGroup } from '../types'
 
 type Meta = Record<string, string>
 
@@ -10,6 +10,7 @@ interface ParsedMarkdown {
 export interface ResumeSchema {
   sections: {
     strengths: string
+    skills: string
     experience: string
     projects: string
     education: string
@@ -22,6 +23,7 @@ export interface ResumeSchema {
 export const ZH_SCHEMA: ResumeSchema = {
   sections: {
     strengths: '个人优势',
+    skills: '技能清单',
     experience: '工作经历',
     projects: '项目经历',
     education: '教育经历',
@@ -34,6 +36,7 @@ export const ZH_SCHEMA: ResumeSchema = {
 export const EN_SCHEMA: ResumeSchema = {
   sections: {
     strengths: 'Highlights',
+    skills: 'Skills',
     experience: 'Experience',
     projects: 'Projects',
     education: 'Education',
@@ -73,6 +76,7 @@ export function parseResumeMarkdown(
         value: text,
       })
     ),
+    skills: parseSkills(getOptionalSection(body, schema.sections.skills)),
     experience: parseEntry(getSection(body, schema.sections.experience)),
     projects: parseEntries(getSection(body, schema.sections.projects)),
     education: parseEducation(getSection(body, schema.sections.education), schema),
@@ -118,11 +122,11 @@ function getTitle(markdown: string): string {
   return title
 }
 
-function getSection(markdown: string, title: string): string {
+function getOptionalSection(markdown: string, title: string): string | null {
   const lines = markdown.split('\n')
   const start = lines.findIndex((line) => line.trim() === `## ${title}`)
   if (start < 0) {
-    throw new Error(`Resume markdown missing section: ${title}`)
+    return null
   }
 
   const next = lines.findIndex((line, index) => index > start && line.startsWith('## '))
@@ -130,10 +134,25 @@ function getSection(markdown: string, title: string): string {
     .slice(start + 1, next < 0 ? undefined : next)
     .join('\n')
     .trim()
+  return section || null
+}
+
+function getSection(markdown: string, title: string): string {
+  const section = getOptionalSection(markdown, title)
   if (!section) {
     throw new Error(`Resume markdown missing section: ${title}`)
   }
   return section
+}
+
+function parseSkills(section: string | null): SkillGroup[] {
+  if (!section) {
+    return []
+  }
+  return parseKeyValueBullets(section).map(({ key, text }) => ({
+    name: key,
+    items: splitInlineList(stripMarkdown(text)),
+  }))
 }
 
 function parseEntries(section: string): Entry[] {
