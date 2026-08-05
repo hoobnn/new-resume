@@ -185,7 +185,7 @@ function parseEducation(section: string, schema: ResumeSchema): ResumeData['educ
     .split(' · ')
     .map(clean)
   const values = Object.fromEntries(
-    parseKeyValueBullets(lines.join('\n')).map(({ key, text }) => [key, stripMarkdown(text)])
+    parseKeyValueBullets(lines.join('\n')).map(({ key, text }) => [key, text])
   )
 
   return {
@@ -193,7 +193,8 @@ function parseEducation(section: string, schema: ResumeSchema): ResumeData['educ
     degree,
     major,
     date,
-    courses: splitInlineList(requireValue(values, schema.eduKeys.courses)),
+    courses: splitInlineList(stripMarkdown(requireValue(values, schema.eduKeys.courses))),
+    // 教育荣誉与荣誉条目一样保留 **加粗** 标记，由视图用 RichText 渲染
     honors: splitInlineList(requireValue(values, schema.eduKeys.honors)),
   }
 }

@@ -127,14 +127,12 @@ export function ShowcaseResumePage({
     [copy.contactLabels[2], profile.email],
     [copy.contactLabels[4], profile.github],
   ]
-  const featuredHonors = [education.honors[0], education.honors[1], honors.competitions[0]].filter(
-    Boolean
-  )
-  const otherHonors = [
+  const honorItems = [
+    ...education.honors,
+    ...honors.competitions.slice(0, 1),
     ...honors.certificates,
     ...honors.competitions.slice(1),
     ...honors.recognitions,
-    ...education.honors.slice(2),
   ]
 
   return (
@@ -188,16 +186,8 @@ export function ShowcaseResumePage({
           </SidebarSection>
 
           <SidebarSection title={copy.honors}>
-            <div className="showcase-featured-honors">
-              {featuredHonors.map((honor, index) => (
-                <div key={honor}>
-                  <span>{String(index + 1).padStart(2, '0')}</span>
-                  <strong>{honor}</strong>
-                </div>
-              ))}
-            </div>
             <ul className="showcase-honor-list">
-              {otherHonors.map((honor) => (
+              {honorItems.map((honor) => (
                 <li key={honor}>
                   <RichText text={honor} />
                 </li>

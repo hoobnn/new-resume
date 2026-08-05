@@ -150,7 +150,9 @@ export function ResumePage({ photoUrl, resume, locale }: ResumePageProps) {
                 {education.honors.map((honor, index) => (
                   <span key={honor}>
                     {index > 0 ? <span className="sep">·</span> : null}
-                    <span className="honor-top">{honor}</span>
+                    <span className="honor-top">
+                      <RichText text={honor} />
+                    </span>
                   </span>
                 ))}
               </span>

@@ -175,34 +175,9 @@ body[data-layout='showcase']::before {
   margin: 5px 0 0;
 }
 
-.showcase-featured-honors {
-  display: grid;
-  gap: 7px;
-}
-.showcase-featured-honors div {
-  align-items: center;
-  background: #fff;
-  border: 1px solid var(--line);
-  border-left: 3px solid var(--blue);
-  display: grid;
-  gap: 8px;
-  grid-template-columns: 22px minmax(0, 1fr);
-  padding: 8px 9px;
-}
-.showcase-featured-honors span {
-  color: var(--blue);
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-}
-.showcase-featured-honors strong {
-  color: var(--blue-dark);
-  font-size: 11px;
-  line-height: 1.35;
-}
 .showcase-honor-list {
   list-style: none;
-  margin: 12px 0 0;
+  margin: 0;
   padding: 0;
 }
 .showcase-honor-list li {
@@ -464,15 +439,6 @@ body[data-layout='showcase']::before {
   .showcase-education p {
     margin-top: 3px;
   }
-  .showcase-featured-honors {
-    gap: 3px;
-  }
-  .showcase-featured-honors div {
-    padding: 4px 6px;
-  }
-  .showcase-honor-list {
-    margin-top: 6px;
-  }
   .showcase-honor-list li {
     margin-bottom: 1px;
   }
@@ -493,7 +459,6 @@ body[data-layout='showcase']::before {
   .showcase-entry li,
   .showcase-summary p,
   .showcase-strengths p,
-  .showcase-featured-honors div,
   .showcase-skill-group,
   .showcase-honor-list li {
     break-inside: avoid;
