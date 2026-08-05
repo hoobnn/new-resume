@@ -426,11 +426,21 @@ body[data-layout='showcase']::before {
     max-width: none;
     width: 100%;
   }
+  html:has(body[data-layout='showcase']) {
+    background: #fff !important;
+  }
   .showcase-sidebar {
-    background: transparent;
+    background: #fff;
     float: left;
     padding: 0 18px 18px 0;
     width: 220px;
+  }
+  /* 普通流块盒从浮动侧栏下方穿过时，边框会画在侧栏内容底下；建 BFC 使其止步于浮动边缘 */
+  .showcase-hero,
+  .showcase-summary,
+  .showcase-metrics,
+  .showcase-strengths {
+    overflow: hidden;
   }
   /* 压缩侧栏纵向间距，确保侧栏整体落在第 1 页，避免溢出到第 2 页顶部形成半栏 */
   .showcase-photo {
