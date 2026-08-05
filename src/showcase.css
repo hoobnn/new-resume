@@ -70,7 +70,7 @@ body[data-layout='showcase']::before {
 .showcase-sidebar {
   background: #f3f6f9;
   border-right: 1px solid var(--line);
-  padding: 42px 28px;
+  padding: 44px 30px;
 }
 
 .showcase-photo {
@@ -92,7 +92,7 @@ body[data-layout='showcase']::before {
 }
 
 .showcase-side-section {
-  margin-top: 32px;
+  margin-top: 38px;
 }
 .showcase-side-section h2 {
   color: var(--blue-dark);
@@ -114,7 +114,7 @@ body[data-layout='showcase']::before {
 
 .showcase-contact-list {
   display: grid;
-  gap: 12px 14px;
+  gap: 14px 16px;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: 0;
 }
@@ -136,7 +136,7 @@ body[data-layout='showcase']::before {
 
 .showcase-skills {
   display: grid;
-  gap: 12px;
+  gap: 16px;
 }
 .showcase-skill-group h3 {
   color: var(--muted);
@@ -148,7 +148,7 @@ body[data-layout='showcase']::before {
 .showcase-skill-group div {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 5px;
 }
 .showcase-skill-group span {
   background: #fff;
@@ -156,7 +156,7 @@ body[data-layout='showcase']::before {
   color: var(--ink);
   font-size: 11px;
   line-height: 1.4;
-  padding: 3px 7px;
+  padding: 4px 8px;
 }
 
 .showcase-education strong {
@@ -183,8 +183,8 @@ body[data-layout='showcase']::before {
 .showcase-honor-list li {
   color: #4e6070;
   font-size: 11px;
-  line-height: 1.5;
-  margin-bottom: 3px;
+  line-height: 1.55;
+  margin-bottom: 7px;
   padding-left: 10px;
   position: relative;
 }
@@ -232,7 +232,7 @@ body[data-layout='showcase']::before {
 }
 
 .showcase-main-section {
-  margin-top: 30px;
+  margin-top: 36px;
 }
 .showcase-main-section > h2 {
   align-items: center;
@@ -263,7 +263,7 @@ body[data-layout='showcase']::before {
   color: var(--muted);
   font-size: 12.5px;
   line-height: 1.72;
-  margin: 0 0 8px;
+  margin: 0 0 10px;
 }
 .showcase-summary strong {
   color: var(--ink);
@@ -322,7 +322,7 @@ body[data-layout='showcase']::before {
   color: #4d5b67;
   font-size: 12px;
   line-height: 1.68;
-  margin: 0 0 6px;
+  margin: 0 0 9px;
 }
 .showcase-strengths p:last-child {
   margin-bottom: 0;
@@ -379,7 +379,7 @@ body[data-layout='showcase']::before {
   color: #4d5b67;
   font-size: 12px;
   line-height: 1.68;
-  margin-bottom: 5px;
+  margin-bottom: 7px;
 }
 .showcase-entry li::marker {
   color: var(--blue);
@@ -441,6 +441,16 @@ body[data-layout='showcase']::before {
   }
   .showcase-honor-list li {
     margin-bottom: 1px;
+  }
+  /* 屏幕端放松的间距在打印端收回，保住 2 页 */
+  .showcase-summary p {
+    margin-bottom: 8px;
+  }
+  .showcase-strengths p {
+    margin-bottom: 6px;
+  }
+  .showcase-entry li {
+    margin-bottom: 5px;
   }
   .showcase-content {
     padding: 0 0 0 24px;
