@@ -36,6 +36,6 @@ React 19、Vite、TypeScript；husky + commitlint 管提交信息。
 
 My own resume as a web page. Content is written in Markdown (kept out of git under `local/data/`), the layout is React + Vite, and the PDF comes from the browser's print dialog. Chinese and English versions, three color themes, a showcase layout and a classic one (`?style=classic`), and a print stylesheet tuned for two A4 pages.
 
-## 许可 / License
+## 许可证 / License
 
-[MIT](LICENSE)
+[MIT](LICENSE) © 2026 hoobnn。可自由使用、修改和分发，需保留版权声明。
